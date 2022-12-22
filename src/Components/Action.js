@@ -20,7 +20,7 @@ export const getItems = () => async (dispatch) => {
       let { data } = await axios.get("https://api.escuelajs.co/api/v1/products",config)
   
       console.log(data)
-    //  data=data.slice(1,5)
+     data=data.slice(1,180)
 
   
       dispatch({ type: "GET_SUCCESS", payload: data});

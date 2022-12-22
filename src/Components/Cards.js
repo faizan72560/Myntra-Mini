@@ -55,7 +55,7 @@ const Cards = (props) => {
 
 
   return (
-    <div className='h-62 md:h-full w-44 md:w-72 shadow-2xl p-1'>
+    <div className='h-62 md:h-full w-36 md:w-72 shadow-2xl p-1'>
         <img src={props.image}></img>
         <div className='flex justify-center md:text-xl my-1 font-semibold'>
             {props.title}
