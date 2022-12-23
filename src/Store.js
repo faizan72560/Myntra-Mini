@@ -1,11 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { cartReducer } from "./cartSlice";
+// import { addcarthandler } from "./Components/Action";
 // import { BlogReducer, GetBlogReducer, ViewBlogReducer } from "./Components/reducers/Blogreducer";
-import { GetCart, GetItems } from "./Components/Reducer";
+import { AddCart, GetCart, GetItems } from "./Components/Reducer";
 
 const store=configureStore({
     reducer:{
         item:GetItems,
-        cart:GetCart
+        cart:GetCart,
+        reducer:cartReducer
+        //  addcart:AddCart
     //    blog:BlogReducer,
     //    getblog:GetBlogReducer,
     //    viewblog:ViewBlogReducer

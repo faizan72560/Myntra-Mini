@@ -17,10 +17,17 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Items from './Items';
+import { useDispatch } from 'react-redux';
+import { getItems } from './Action';
+import { useState } from 'react';
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
+
+  const [Text, setText] = useState('')
+
+  const dispatch=useDispatch()
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -28,18 +35,28 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const get=(text)=>{
+    setText(text)
+    
+    console.log(text)
+    localStorage.setItem('text',text)
+     dispatch(getItems(Text))
+
+  }
+
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
-        {['Cosmetics', 'Sports', 'Footwear', 'Grocessery'].map((text, index) => (
+        {['Clothes', 'Electronics', 'Furniture', 'Shoes',"others"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
               </ListItemIcon>
-              <ListItemText primary={text} />
+            
+              <ListItemText primary={text} onClick={()=>{get(text)}}/>
             </ListItemButton>
           </ListItem>
         ))}
