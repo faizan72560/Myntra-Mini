@@ -20,9 +20,12 @@ const Cards = (props) => {
         })
         console.log(cart)
 
-        const Cart=cart[0]
+        let Cart=cart[0]
+        console.log(Cart)
 
-        // setCart(cart)
+        // setCart(...cart[0])
+
+        console.log(Cart)
 
         
        

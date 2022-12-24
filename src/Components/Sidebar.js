@@ -20,6 +20,7 @@ import Items from './Items';
 import { useDispatch } from 'react-redux';
 import { getItems } from './Action';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -39,8 +40,13 @@ function ResponsiveDrawer(props) {
     setText(text)
     
     console.log(text)
+    
     localStorage.setItem('text',text)
-     dispatch(getItems(Text))
+    if(text==="RemoveFilter"){
+      // window.location.reload();
+      localStorage.removeItem("text")
+    }
+     dispatch(getItems())
 
   }
 
@@ -49,7 +55,7 @@ function ResponsiveDrawer(props) {
       <Toolbar />
       <Divider />
       <List>
-        {['Clothes', 'Electronics', 'Furniture', 'Shoes',"others"].map((text, index) => (
+        {['Clothes', 'Electronics', 'Furniture', 'Shoes',"RemoveFilter"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -87,9 +93,18 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
+          <div className='flex mx-2  '>
+
           <Typography variant="h6" noWrap component="div">
-            Myntra
+          <Link to="/">Myntra</Link>
           </Typography>
+          </div>
+
+          <div className='flex mx-10'>
+          <Typography variant="h6" noWrap component="div">
+          <Link to="/cart">Cart</Link>
+          </Typography>
+          </div>
         </Toolbar>
       </AppBar>
       <Box

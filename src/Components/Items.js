@@ -24,8 +24,11 @@ const Items = () => {
     const [data, setdata] = useState([])
     const [itemsperpage, setitemsperpage] = useState(19)
     const [currentpage, setcurrentpage] = useState(1)
-    // const indexoflastpost=currentpage*itemsperpage
-    // items=items.slice(currentpage,indexoflastpost)
+    const indexoflastpost=currentpage*itemsperpage
+    if(items){
+
+        items=items.slice(currentpage,indexoflastpost)
+    }
 
 
 
@@ -54,6 +57,7 @@ const Items = () => {
 
       
        
+        
        
 
      

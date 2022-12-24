@@ -18,7 +18,7 @@ export const getItems = (currentpage,indexoflastpost,text) => async (dispatch,ge
           //   title,text
           // }
         //   console.log(title,text)
-        // let text=localStorage.getItem("text")
+        let text=localStorage.getItem("text")
         console.log(text)
         let id;
 
@@ -34,26 +34,41 @@ export const getItems = (currentpage,indexoflastpost,text) => async (dispatch,ge
         else if(text=='Shoes'){
           id=4
         }
-        else{
+        else if(text=='Others'){
           id=5
+        }
+        else{
+          // id=6
+          // window.location.reload()
         }
 
         console.log(id)
 
+        let data;
 
-      let { data } = await axios.get("https://api.escuelajs.co/api/v1/products",config)
-      // let { data } = await axios.get("https://api.escuelajs.co/api/v1/categories/1/products",config)
 
-  
-      console.log(data)
-      if(indexoflastpost<=data.length){
+        if(id<5){
+          
+            data  = await axios.get(`https://api.escuelajs.co/api/v1/categories/${id}/products`,config)
+            console.log(data)
+            data=data.data
+       }
+       else{
+      
 
-        data=data.slice(currentpage,indexoflastpost)
-      }
-      else{
-        // window.location.reload()
-
-      }
+           data  = await axios.get(`https://api.escuelajs.co/api/v1/products`,config)
+          //  if(indexoflastpost<=data.data.length){
+             
+          //    data=data.data.slice(currentpage,indexoflastpost)
+          //  }
+           console.log(data)
+           data=data.data
+          }
+          
+      //  const Data=data.data
+       
+       
+        // data=data.data.slice(currentpage,indexoflastpost)
 
   
       dispatch({ type: "GET_SUCCESS", payload: data});
@@ -71,11 +86,11 @@ export const getItems = (currentpage,indexoflastpost,text) => async (dispatch,ge
         console.log("hrhh")
         dispatch({type:"GET_TOCART_REQUEST"});
 
-        const cart=JSON.parse(localStorage.getItem('cart'))
-        console.log(cart)
+        const Cart=JSON.parse(localStorage.getItem('cart'))
+        console.log(Cart)
 
 
-        dispatch({ type: "GET_TOCART_SUCCESS",});
+        dispatch({ type: "GET_TOCART_SUCCESS",payload:Cart});
 
 
     }catch(error){
@@ -103,7 +118,7 @@ export const getItems = (currentpage,indexoflastpost,text) => async (dispatch,ge
         // localStorage.setItem('arr',JSON.stringify(arr))
         console.log(state)
 
-        const itemInCart = state.cart.find((item) => item.id === action.payload.id);
+        let itemInCart = state.cart.find((item) => item.id === action.payload.id);
         if (itemInCart) {
           itemInCart.quantity++;
         } else {
