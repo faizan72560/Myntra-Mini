@@ -5,7 +5,7 @@ import { getcarthandler } from './Action'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Loading from './Loading'
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import { decrementQuantity, incrementQuantity } from '../cartSlice'
 import { useState } from 'react'
 
@@ -61,9 +61,9 @@ const Cart = () => {
                             </div>
                                 <div className='flex '>
                                     {console.log(item.id)}
-                                    <Button onClick={()=>{decrementQuantity(item.id)}}>-</Button>
+                                    <button onClick={()=>{decrementQuantity(item.id)}}>-</button>
                                 <h2 className='text-2xl '>{quantity}</h2>
-                                    <Button onClick={()=>{incrementQuantity(item.id)}}>+</Button>
+                                    <button onClick={()=>{incrementQuantity(item.id)}}>+</button>
                                      
                                 </div>
 
