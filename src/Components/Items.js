@@ -15,7 +15,11 @@ import { useState } from 'react'
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
+
 const Items = () => {
+    const { Alrt } = useSelector((state) => state.alert)
+    console.log(Alrt)
+
     
     let { items, loading } = useSelector((state) => state.item)
     console.log(items,loading)
@@ -69,7 +73,7 @@ const handleChange = (event, value) => {
     
   return (
     <div>
-         <div className='flex flex-wrap justify-center'>
+         <div className='flex flex-wrap justify-center gap-1'>
             {
                 loading?(
                     <Loading/>

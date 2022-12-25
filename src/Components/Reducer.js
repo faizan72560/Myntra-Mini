@@ -61,5 +61,23 @@ export const AddCart = createReducer({
 });
 
 
+ 
+export const Alert = createReducer(intialState, {
+  ALERT_REQUEST: (state) => {
+    state.loading = true;
+  },
+  ALERT_SUCCESS: (state, action) => {
+    state.loading = false;
+    state.Alrt = action.payload;
+  },
+  ALERT_FAILURE: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+ 
+});
+
+
+
 
   

@@ -18,13 +18,22 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Items from './Items';
 import { useDispatch } from 'react-redux';
-import { getItems } from './Action';
+import { Alerthandler, getItems } from './Action';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ReactJsAlert from "reactjs-alert"
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
+
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
+  const { Alrt } = useSelector((state) => state.alert)
+    console.log(Alrt)
+
+  const [Status, setStatus] = useState(true)
 
   const [Text, setText] = useState('')
 
@@ -50,10 +59,26 @@ function ResponsiveDrawer(props) {
 
   }
 
+  useEffect(() => {
+
+    setTimeout(()=>{
+      dispatch(Alerthandler())
+
+    },1000)
+
+    
+  }, [])
+  
+
+
+
   const drawer = (
     <div>
+      
+      
       <Toolbar />
       <Divider />
+       
       <List>
         {['Clothes', 'Electronics', 'Furniture', 'Shoes',"RemoveFilter"].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -68,13 +93,17 @@ function ResponsiveDrawer(props) {
         ))}
       </List>
       
+      
     </div>
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
+    <>
+    
     <Box sx={{ display: 'flex' }}>
+    
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -141,13 +170,26 @@ function ResponsiveDrawer(props) {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1, p: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
+
+        <div className='flex justify-center mx-auto'>
+
+        {/* {Alrt&& <ReactJsAlert
+  status={true} // true or false
+  type="success" // success, warning, error, info
+  title="Item Added To Cart"
+  Close={() => setStatus(false)}
+/> } */}
+        </div>
+
         <Toolbar />
         <Items/>
        
       </Box>
     </Box>
+    </>
+
   );
 }
 

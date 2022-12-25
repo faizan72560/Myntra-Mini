@@ -143,3 +143,44 @@ export const getItems = (currentpage,indexoflastpost,text) => async (dispatch,ge
 
   }
 
+
+
+
+  
+  export const Alerthandler=(cart,state, action)=>(dispatch)=>{
+    try{
+        console.log("hrhh")
+        dispatch({type:"ALERT_REQUEST"});
+
+        // console.log(cart)
+
+        // arr.push(cart)
+        // console.log(arr)
+        // localStorage.setItem('arr',JSON.stringify(arr))
+       if(alert===true)
+       {
+        alert=false
+       }
+       else{
+        alert=true
+       }
+       
+
+
+
+
+        
+        dispatch({ type: "ALERT_SUCCESS",payload: alert});
+
+
+    }catch(error){
+
+        dispatch({
+            type: "ALERT_FAILURE",
+            payload: error
+          });
+
+    }
+
+  }
+
