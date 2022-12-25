@@ -106,7 +106,7 @@ console.log(data)
 
         </nav>
 
-        <div className='flex'>
+        <div className='flex md:flex-row flex-col'>
 
         <div className='w-full  '>
 
@@ -116,13 +116,13 @@ console.log(data)
             loading?<Loading/>:(
                 Cart && Cart.map((item)=>{
                     return(
-                        <div className='h-44 w-7/12 my-8 shadow-2xl rounded-xl p-2'>
-                            <div className='flex justify-between'>
+                        <div className='h-44 md:w-7/12 w-full my-8 shadow-2xl rounded-xl p-2'>
+                            <div className='flex justify-between '>
                                 
                         <img className='w-4/12 h-36  rounded-xl my-4' src={item.images[0]}/>
 
                                 
-                        <div className='flex flex-col '>
+                        <div className='flex flex-col text-center '>
 
                             <div className='my-2 '>
                                 <h1 className='text-2xl font-serif'>Price</h1>
@@ -163,7 +163,7 @@ console.log(data)
 </div>
 
 
-        <div className='h-80 w-96 shadow-2xl my-8 mx-1 rounded-xl p-2'>
+        <div className='h-80 md:w-96 w-screen shadow-2xl my-8 mx-1 rounded-xl p-2'>
             
 <h1 className='text-center text-3xl font-serif'>Shopping Details</h1>
 
